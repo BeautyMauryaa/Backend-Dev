@@ -38,112 +38,111 @@ The backend processes the request and returns user information.
 | DELETE | `/api/users/101` | Delete user            |
 
 
+# Topic 5. What is REST API?
 
-What is REST?
+## 1. What is REST?
+
 REST stands for Representational State Transfer.
 
-It is an architectural style for designing network-based APIs.
+REST is an architectural style used to design network-based APIs. It defines principles for communication between clients and servers.
 
-A RESTful API allows clients to interact with resources using standard HTTP methods.
+An API that follows REST principles is called a RESTful API.
 
-Examples of resources:
-- Users
-- Students
-- Products
-- Orders
-- Payments
-2. REST API example
+Simple example:
+
 Imagine you're developing a Student Management System.
 
 Your backend provides these endpoints:
-HTTP Method	Endpoint	Operation
-GET	/api/students	Get all students
-GET	/api/students/10	Get one student
-POST	/api/students	Create student
-PUT	/api/students/10	Replace student
-PATCH	/api/students/10	Partially update student
-DELETE	/api/students/10	Delete student
 
+| HTTP Method | Endpoint          | Purpose          |
+| ----------- | ----------------- | ---------------- |
+| GET         | `/api/students`   | Get all students |
+| GET         | `/api/students/1` | Get one student  |
+| POST        | `/api/students`   | Create student   |
+| PUT         | `/api/students/1` | Replace student  |
+| PATCH       | `/api/students/1` | Update student   |
+| DELETE      | `/api/students/1` | Delete student   |
 
+These endpoints operate on a resource called `students`.
 
+## 2. Important REST Principles
 
-
-
-
-
-
-blog.bytebytego.com
-
-
-3. Important REST principles
 There are six commonly described REST architectural constraints.
 
-1. Client-Server
+### 1. Client-Server Separation
 
-Client and server have separate responsibilities.
+Frontend and backend should have separate responsibilities.
 
-2. Statelessness
+- Client handles UI.
+- Server handles business logic and data processing.
 
-Every request must contain the information necessary for the server to process it. The server does not rely on stored client session state between requests.
+### 2. Statelessness
 
-3. Cacheability
+Every request should contain the information necessary for the server to process it.
+
+The server should not depend on stored client session state between requests.
+
+Example:
+
+```
+GET /api/profile
+Authorization: Bearer your_token
+```
+
+The client sends its authentication credentials with the request.
+
+### 3. Cacheability
 
 Responses should indicate whether they can be cached.
 
-4. Uniform Interface
+For example, publicly available product information may be cached to reduce repeated database queries.
 
-Resources are accessed through a consistent interface, generally using resource-oriented URLs and standard HTTP methods.
+### 4. Uniform Interface
 
-5. Layered System
+Resources should be accessed through a consistent interface.
 
-The client does not need to know whether it communicates directly with the origin server or through intermediaries such as proxies or gateways.
+Example:
 
-6. Code on Demand (Optional)
+```
+GET    /api/users
+POST   /api/users
+GET    /api/users/10
+DELETE /api/users/10
+```
 
-A server may optionally send executable code to the client.
+### 5. Layered System
 
-Interview tip: Statelessness is especially important. For example, a JWT-authenticated request typically sends its access token with each protected API request.
-4. What makes an API RESTful?
-Compare these examples:
-Preferred
-Resource-oriented endpoints
+A client doesn't need to know whether its request passes through a proxy, gateway, load balancer or other intermediate layer.
 
-GET /api/users
-POST /api/users
-DELETE /api/users/5
+### 6. Code on Demand (Optional)
 
+A server can optionally send executable code to a client, such as JavaScript.
 
+This is the optional REST constraint.
 
-Avoid
-Action-oriented endpoint naming
+[RESTful API | Engati](https://images.openai.com/static-rsc-4/-c1SRh6vG2PkipdqfqKGNleyNV8yJ6EfRfg_3A3JDDvSZop-H7VAUi_QtC3QwEQmSOlt0y8GU_nkT9t2WCjb-V6UeWedNfOiKQImXZj1LpkCaY0hshcp51gZ65IUI3I2TUUe8MGLcapB4M9zcUXSoIo8f7HR-Q3qYQfX2Gc93Fg?purpose=inline)
 
-GET /api/getUsers
-POST /api/createUser
-GET /api/deleteUser/5
+[engati.com](https://www.engati.com/glossary/restful-api?utm_source=chatgpt.com)
 
+## 3. REST API vs Normal API
 
+| API                                    | REST API                                     |
+| -------------------------------------- | -------------------------------------------- |
+| General communication interface        | API following REST architectural constraints |
+| Can use different architectural styles | Uses REST principles                         |
+| Can use different protocols            | Commonly uses HTTP                           |
+| No single mandatory data format        | Commonly uses JSON                           |
 
-REST APIs generally use nouns for resources and HTTP methods to express operations.
-5. Important interview questions
-1. What is REST API?
-2. What is the difference between REST and RESTful API?
-3. What are the six REST constraints?
+Important interview point: Every REST API is an API, but every API is not a REST API.
+
+## 4. Interview Questions
+
+1. What is REST?
+2. What is a RESTful API?
+3. What are the six REST architectural constraints?
 4. What does stateless mean?
-5. Why do we use HTTP methods in REST APIs?
-6. What is the difference between PUT and PATCH?
-7. Can GET requests have a request body?
-8. Is REST an architectural style or a protocol?
-9. What is resource-based URL design?
-10. Can REST APIs use JSON?
-6. Real-world scenario
-Scenario: A user clicks the Delete button on a student record.
+5. Why are REST APIs commonly used?
+6. What is the difference between REST and SOAP?
+7. Is JSON mandatory in REST?
+8. Can REST APIs maintain authentication?
 
-What should happen?
-1. Frontend sends DELETE /api/students/10.
-2. Backend authenticates the user.
-3. Backend checks whether the user is authorized.
-4. Backend checks whether the student exists.
-5. Backend deletes the student.
-6. Backend returns an appropriate HTTP response.
-7. Frontend updates the student list.
-One important distinction: REST does not require every API to use JSON, although JSON is commonly used.
