@@ -50,3 +50,41 @@ Q8. What is the difference between a Controller and a Service?
 Q9. What happens if the database query fails?
 
 The query throws an error. If it's part of a transaction, it rolls back any changes to keep data safe. The error bubbles up to the server's error handler, which logs the issue and returns an error response (like a `500` status code) to the client.
+
+How does frontend communicate with backend?
+
+
+
+What is HTTP?
+
+
+
+What is the difference between HTTP and HTTPS?
+
+
+
+Why is JSON commonly used for API communication?
+
+
+
+What is the difference between Fetch and Axios?
+
+
+
+What happens when the frontend sends an incorrect request?
+
+
+
+Can frontend communicate with backend without an API?
+
+
+
+What is the purpose of request headers?
+
+
+
+What is the difference between request body and response body?
+
+
+
+What happens if the backend server does not respond?
