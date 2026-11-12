@@ -136,6 +136,3 @@ Practical task: Create an Express server with these three GET endpoints:
 - `/users` → `"All Users"`
 - `/products` → `"All Products"`
 
-Don't copy blindly. Create it yourself and test all three endpoints in Postman.
-
-Next, we'll learn routing, HTTP methods, and how backend endpoints actually work—a core part of your backend interviews.
