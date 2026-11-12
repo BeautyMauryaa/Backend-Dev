@@ -107,8 +107,81 @@ Timeout
 2. Why does Node.js need an Event Loop?
 3. What is the Call Stack?
 4. What are microtasks and macrotasks?
-5. What is the difference between `process.nextTick()` and `setTimeout()`?
-6. What happens when the Call Stack is busy?
-7. Can synchronous code block the Event Loop?
-8. What is the role of libuv in the Event Loop?
+
+### 1. What is the Call Stack?
+
+Interview Answer:
+
+The Call Stack is a data structure that keeps track of which functions are currently executing in JavaScript. It follows the LIFO (Last In, First Out) principle.
+
+When a function is called, it is pushed onto the stack, and when it finishes, it is removed.
+
+### 2. What is the difference between `process.nextTick()` and `setTimeout()`?
+
+Interview Answer:
+
+Both are used to execute callbacks later, but they work differently.
+
+- `process.nextTick()` executes its callback immediately after the current operation finishes, before the Event Loop continues to its next phase.
+- `setTimeout()` executes its callback after the specified delay, during the Timers phase of the Event Loop.
+
+Example:
+
+```
+console.log("Start");
+
+process.nextTick(() => {
+    console.log("Next Tick");
+});
+
+setTimeout(() => {
+    console.log("Timeout");
+}, 0);
+
+console.log("End");
+```
+
+Output:
+
+```
+Start
+End
+Next Tick
+Timeout
+```
+
+### 3. What happens when the Call Stack is busy?
+
+Interview Answer:
+
+When the Call Stack is busy executing a task, JavaScript cannot execute other callbacks until the current task finishes.
+
+As a result, callbacks and Event Loop operations have to wait, which can delay other requests and make the application slow.
+
+### 4. Can synchronous code block the Event Loop?
+
+Interview Answer:
+
+Yes. Synchronous code blocks the Event Loop because it executes on the main thread and must finish before other callbacks can run.
+
+For example, a large calculation or an infinite loop can block the Event Loop and prevent Node.js from handling other requests efficiently.
+
+### 5. What is the role of libuv in the Event Loop?
+
+Interview Answer:
+
+libuv is a library used by Node.js to handle asynchronous operations. It provides the Event Loop, manages asynchronous I/O operations, and maintains a thread pool for certain tasks.
+
+It helps Node.js handle multiple operations efficiently without blocking the main JavaScript thread.
+
+Quick revision for interviews:
+
+| Concept              | Remember                                    |
+| -------------------- | ------------------------------------------- |
+| Call Stack           | Executes JavaScript functions               |
+| `process.nextTick()` | Runs before the Event Loop continues        |
+| `setTimeout()`       | Runs in the Timers phase                    |
+| Busy Call Stack      | Other callbacks must wait                   |
+| Synchronous code     | Can block the Event Loop                    |
+| libuv                | Event Loop + asynchronous I/O + thread pool |
 
