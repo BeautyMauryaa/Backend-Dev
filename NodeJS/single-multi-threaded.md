@@ -78,6 +78,36 @@ Because `fs.readFile()` performs asynchronous file reading. JavaScript continues
 2. What is the difference between single-threaded and multithreaded execution?
 3. Is Node.js single-threaded?
 4. How does Node.js handle multiple requests?
+
+Node.js handles multiple requests using a single-threaded Event Loop and non-blocking I/O. It doesn't wait for one request to finish before handling another. Instead, it delegates time-consuming operations and processes their results when they are ready.
+
+Example: If one request is waiting for data from the database, Node.js can handle other incoming requests at the same time.
+
 5. What are Worker Threads?
+
+Interview Answer:
+
+Worker Threads allow Node.js to run JavaScript code in separate threads. They are mainly used to handle CPU-intensive tasks without blocking the main thread.
+
+Example: Image processing, large calculations, and data processing.
+
 6. When would you use Worker Threads?
+
+Interview Answer:
+
+I would use Worker Threads when my application needs to perform CPU-intensive tasks that could block the Event Loop.
+
+For example:
+
+- Processing large files.
+- Performing complex calculations.
+- Image or video processing.
+- Handling large amounts of data.
+
+Important: Worker Threads are generally not needed for normal database queries or API requests because Node.js already handles I/O operations asynchronously.
+
+Remember this difference:
+
+- Multiple requests: Handled efficiently using the Event Loop and non-blocking I/O.
+- Worker Threads: Used for CPU-intensive tasks that need separate threads.
 
