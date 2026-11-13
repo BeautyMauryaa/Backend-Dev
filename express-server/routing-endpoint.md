@@ -166,72 +166,10 @@ Important: Idempotency concerns the intended server state, not necessarily ident
 ### 5. Practical Express implementation
 
 Let's implement basic CRUD-style routes.
+ ```
+ crud-style-pract
 
-```
-const express = require("express");
-
-const app = express();
-
-// Middleware to parse JSON request bodies
-app.use(express.json());
-
-// GET: Fetch all students
-app.get("/students", (req, res) => {
-    res.status(200).json({
-        message: "Students fetched successfully"
-    });
-});
-
-// GET: Fetch one student
-app.get("/students/:id", (req, res) => {
-    const studentId = req.params.id;
-
-    res.status(200).json({
-        message: "Student fetched",
-        id: studentId
-    });
-});
-
-// POST: Create student
-app.post("/students", (req, res) => {
-    const student = req.body;
-
-    res.status(201).json({
-        message: "Student created",
-        data: student
-    });
-});
-
-// PUT: Replace student
-app.put("/students/:id", (req, res) => {
-    res.status(200).json({
-        message: "Student replaced",
-        id: req.params.id,
-        data: req.body
-    });
-});
-
-// PATCH: Partially update student
-app.patch("/students/:id", (req, res) => {
-    res.status(200).json({
-        message: "Student updated",
-        id: req.params.id,
-        updates: req.body
-    });
-});
-
-// DELETE: Delete student
-app.delete("/students/:id", (req, res) => {
-    res.status(200).json({
-        message: "Student deleted",
-        id: req.params.id
-    });
-});
-
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
-```
+ ```
 
 This is a learning example: it demonstrates routing and request handling, but it does not actually store, replace, or delete students in a database.
 
@@ -276,6 +214,11 @@ One product	GET /products/:id
 Filter by category	GET /products?category=electronics
 Search by name	GET /products?search=phone
 
+```
+crud-ecommerce
+
+```
+
 Notice that filtering and searching can use query parameters.
 
 Your practice
@@ -284,13 +227,24 @@ Answer these five interview questions.
 Explain using URL and HTTP method.
 
 2. What is the difference between req.params and req.query?
-Give one example of each.
+• req.params example: Used to identify a specific resource, such as :id in GET /products/25.
+• req.query example: Used for filtering, searching, or sorting, such as ?category=electronics in GET /products?category=electronics
 
 3. For GET /products/25, how will you access 25?
-Write the Express property.
+- Assuming your route is defined as app.get('/products/:id', ...), you access 25 using the req.params property:
+```
+req.params.id // Returns '25'
+
+```
 
 4. For GET /products?page=3&limit=5, how will you access page and limit?
-Write the Express code.
+- access both values from the req.query object using destructuring or dot notation
+```
+app.get('/products', (req, res) => {
+  const { page, limit } = req.query; // page is '3', limit is '5'
+});
 
-5. Can the same URL have both GET and POST routes? Explain.
-Think about HTTP methods.
+```
+
+5. Can the same URL have both GET and POST routes? 
+- Yes, the exact same URL can have both GET and POST routes because Express treats each combination of HTTP method and URL as a unique route.
