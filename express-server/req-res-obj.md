@@ -239,10 +239,24 @@ Make sure you can answer these without looking at notes.
 4. What happens if we access `req.body` without JSON parsing middleware?
 5. What is the difference between `res.send()` and `res.json()`?
 6. What does `res.status(201).json()` do?
+- It sets the HTTP response status code to 201 Created and sends a JSON-formatted object back to the client as the response body.
+
+
 7. Can we send multiple responses using the same `res` object?
+- No. Once you send a response (using res.send(), res.json(), or res.end()), the HTTP request-response cycle is closed and finished. If you try to send another response afterwards, Node.js will throw an error: ERR_HTTP_HEADERS_SENT
+
+
 8. What happens if we forget to send a response or end the response?
+-The client's request will hang indefinitely until it hits a timeout limit. The server never closes the connection or sends data back, leaving the client stuck waiting
+
 9. What is the difference between request headers and request body?
+-Request Headers: Contain metadata about the request
+- Request Body: Contains the actual data or payload sent by the client (e.g., form input, JSON objects like username and password during a POST request).
+
+
 10. Why should we not send sensitive information such as passwords in API responses?
+-Security risk. Responses can be intercepted via network sniffing, accidentally cached, stored insecurely in browser history/proxy logs, or exposed to unauthorized users if client-side code inspects the payload.
+
 
 
 
