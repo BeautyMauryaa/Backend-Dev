@@ -215,39 +215,9 @@ app.get("/old-page", (req, res) => {
 Redirects the client to another URL.
 
 ## **4. Practical example: Using req and res together**
-
-Imagine a login API.
-
 ```
-app.use(express.json());
-
-app.post("/login", (req, res) => {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-        return res.status(400).json({
-            success: false,
-            message: "Email and password are required"
-        });
-    }
-
-    return res.status(200).json({
-        success: true,
-        message: "Login request received"
-    });
-});
+pract-req-res folder
 ```
-
-Understand the execution:
-
-1. Client sends email and password.
-2. Express parses the JSON body.
-3. `req.body` provides the submitted credentials.
-4. Backend validates whether required fields exist.
-5. `res.status(400)` sends a bad-request response if data is missing.
-6. Otherwise, `res.status(200).json()` sends a success response.
-
-This is only input validation, not complete authentication. A real login must verify the user and password securely.
 
 ## **5. Important distinction:&#x20;**`res.send()`**&#x20;vs&#x20;**`res.json()`
 
