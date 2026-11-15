@@ -1,4 +1,4 @@
-# ** MVC Architecture**
+#  MVC Architecture
 
 in real-world backend projects, just keeping routes in separate files is not enough.
 
