@@ -158,6 +158,9 @@ Try answering these:
 7. Can an Express backend use MVC without a traditional View?
 
 ## **8. Practical coding challenge**
+```
+pratical coding
+```
 
 Challenge 4 · MVC Implementation
 
