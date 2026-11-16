@@ -6,11 +6,11 @@ CRUD means:
 
 | Operation      | HTTP method | Purpose                        |
 | -------------- | ----------- | ------------------------------ |
-| Create         | POST        | New student add karna          |
-| Read           | GET         | Students retrieve karna        |
-| Update         | PUT         | Complete resource update karna |
-| Partial Update | PATCH       | Selected fields update karna   |
-| Delete         | DELETE      | Student remove karna           |
+| Create         | POST        |to add the  New student          |
+| Read           | GET         |to  retrieve the Students      |
+| Update         | PUT         | to update the Complete resource  |
+| Partial Update | PATCH       |to update the  Selected fields    |
+| Delete         | DELETE      |  to remove     |
 
 ## **1. API endpoints**
 
