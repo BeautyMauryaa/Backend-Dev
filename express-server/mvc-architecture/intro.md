@@ -1,4 +1,4 @@
-#  MVC Architecture
+# MVC Architecture
 
 in real-world backend projects, just keeping routes in separate files is not enough.
 
@@ -61,9 +61,9 @@ Interacts with database
 
 Remember this responsibility:
 
-- Routes decide *where the request goes*.
-- Controllers decide *what should happen*.
-- Models handle *data and database operations*.
+- Routes decide _where the request goes_.
+- Controllers decide _what should happen_.
+- Models handle _data and database operations_.
 
 ## **3. Project folder structure**
 
@@ -91,138 +91,8 @@ This is a common structure for a small Express application. Larger projects may 
 
 ## **4. Practical implementation**
 
-For now, we'll use an array instead of MongoDB so you can understand MVC without database complexity.
-
-### **Step 1: Model —&#x20;**`models/studentModel.js`
-
-Model handles student data operations.
-
 ```
-const students = [];
-
-function getAllStudents() {
-    return students;
-}
-
-function getStudentById(id) {
-    return students.find(student => student.id === Number(id));
-}
-
-function createStudent(data) {
-    const newStudent = {
-        id: students.length + 1,
-        name: data.name,
-        email: data.email
-    };
-
-    students.push(newStudent);
-
-    return newStudent;
-}
-
-module.exports = {
-    getAllStudents,
-    getStudentById,
-    createStudent
-};
-```
-
-Notice: Model doesn't know anything about HTTP requests or responses.
-
-### **Step 2: Controller —&#x20;**`controllers/studentController.js`
-
-Controller handles request processing and calls model functions.
-
-```
-const Student = require("../models/studentModel");
-
-function getStudents(req, res) {
-    const students = Student.getAllStudents();
-
-    res.status(200).json({
-        success: true,
-        data: students
-    });
-}
-
-function getStudent(req, res) {
-    const student = Student.getStudentById(req.params.id);
-
-    if (!student) {
-        return res.status(404).json({
-            success: false,
-            message: "Student not found"
-        });
-    }
-
-    res.status(200).json({
-        success: true,
-        data: student
-    });
-}
-
-function createStudent(req, res) {
-    const { name, email } = req.body;
-
-    if (!name || !email) {
-        return res.status(400).json({
-            success: false,
-            message: "Name and email are required"
-        });
-    }
-
-    const student = Student.createStudent({ name, email });
-
-    res.status(201).json({
-        success: true,
-        message: "Student created successfully",
-        data: student
-    });
-}
-
-module.exports = {
-    getStudents,
-    getStudent,
-    createStudent
-};
-```
-
-### **Step 3: Routes —&#x20;**`routes/studentRoutes.js`
-
-Routes connect URLs to controller functions.
-
-```
-const express = require("express");
-const router = express.Router();
-
-const studentController = require("../controllers/studentController");
-
-router.get("/", studentController.getStudents);
-
-router.get("/:id", studentController.getStudent);
-
-router.post("/", studentController.createStudent);
-
-module.exports = router;
-```
-
-Notice how clean the routes are now. No database or business logic is written here.
-
-### **Step 4: Main server —&#x20;**`server.js`
-
-```
-const express = require("express");
-const app = express();
-
-const studentRoutes = require("./routes/studentRoutes");
-
-app.use(express.json());
-
-app.use("/students", studentRoutes);
-
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
+practical folder
 ```
 
 ## **5. Test using Postman**
@@ -311,7 +181,3 @@ Requirements:
 - Return 404 if the student doesn't exist.
 - Use appropriate HTTP status codes.
 - Keep route files free from business logic.
-
-**Next topic: Express.js CRUD API — complete practical implementation.**
-
-We'll build GET, POST, PUT, PATCH, and DELETE endpoints, handle edge cases, and understand how these patterns translate to MongoDB/Mongoose.
