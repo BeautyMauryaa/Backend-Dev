@@ -29,5 +29,5 @@ API development, databases, security, and deployment.
 - Understand backend concepts.
 - Build practical backend applications.
 - Practice real-world scenarios.
-- Prepare for backend developer interviews.
+- Prepare for backend developer interviews. 
 
