@@ -3,7 +3,7 @@
 
 A structured journey into Backend Development,
 covering core concepts, practical implementation,
-API development, databases, security, and deployment.
+API development, databases, security,and deployment.
 
 ## Tech Stack
 - JavaScript
