@@ -141,23 +141,3 @@ Your requirements:
 | Invalid ID format        | 400             |
 | Valid but nonexistent ID | 404             |
 | Database error           | 500             |
-
-## **Interview MCQs**
-
-In an Order schema, what does ref: "User" specify when used with an ObjectId field?
-
-1 of 5
-
-AThe MongoDB database name
-
-BThe referenced Mongoose model
-
-CThe collection's validation rules
-
-DThe field's default ObjectId
-
-Next
-
-Give feedback
-
-**After you complete this:** We'll cover indexing and unique indexes, then aggregation, and finally the complete MongoDB CRUD API.
