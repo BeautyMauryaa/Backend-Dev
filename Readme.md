@@ -3,7 +3,7 @@
 
 A structured journey into Backend Development,
 covering core concepts, practical implementation,
-API development, databases, security, and deployment.
+API development, databases, security,and deployment.
 
 ## Tech Stack
 - JavaScript
@@ -29,5 +29,5 @@ API development, databases, security, and deployment.
 - Understand backend concepts.
 - Build practical backend applications.
 - Practice real-world scenarios.
-- Prepare for backend developer interviews.
+- Prepare for backend developer interviews. 
 
