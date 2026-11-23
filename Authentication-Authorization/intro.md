@@ -8,9 +8,6 @@ These two concepts are fundamental to backend development and frequently asked i
 
 Authentication is the process of verifying the identity of a user or client attempting to access an application.
 
-Simple Hinglish explanation:
-
-Authentication ka matlab hai verify karna ki user actually wahi person hai jo woh claim kar raha hai.
 
 Example:
 
@@ -36,9 +33,6 @@ The user is now authenticated.
 
 Authorization is the process of determining whether an authenticated user has permission to access a particular resource or perform a specific action.
 
-Simple Hinglish explanation:
-
-Authorization decide karta hai ki logged-in user ko kya karne ki permission hai.
 
 Example:
 
