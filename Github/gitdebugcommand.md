@@ -5,7 +5,7 @@
 - git diff --staged => show staged changes
 - git diff file.js => shows unstaged changes in one
 - git show => display the lates commit and its changes
-- git ls-files => lists tracked files
+- git ls-files => lists tracked files 
 
 
 ### pull,push,fetch and sync with github
