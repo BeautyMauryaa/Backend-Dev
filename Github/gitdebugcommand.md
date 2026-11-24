@@ -7,7 +7,6 @@
 - git show => display the lates commit and its changes
 - git ls-files => lists tracked files 
 
-
 ### pull,push,fetch and sync with github
 - git fetch => Downloads remote updates without integrating them into your current branch
 - git fetch origin => fetches updates from origin
