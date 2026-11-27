@@ -7,6 +7,7 @@
 * **Read:** Retrieve documents.
 * **Update:** Modify documents.
 * **Delete:** Remove documents.
+* 
 
 ### 17. How do you insert a single document?
 ```javascript
